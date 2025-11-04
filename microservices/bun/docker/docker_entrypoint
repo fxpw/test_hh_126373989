@@ -1,9 +1,15 @@
 #!/bin/bash
-if [ ! -d node_modules ]; then
-	if [ -f package-lock.json ]; then npm ci --omit=dev; else npm install --omit=dev; fi
+set -e
+
+if [ ! -d "node_modules" ]; then
+  echo "📦 Installing dependencies..."
+  bun install
 fi
-if [ "$NODE_ENV" = 'production' ]; then
-	node ./app.js
+
+echo "🚀 Starting Bun service on port ${BACKEND_PORT:-3000}"
+
+if [ "$NODE_ENV" = "production" ]; then
+  exec bun run app.js
 else
-	npx nodemon --inspect=0.0.0.0:9229 ./app.js
+  exec bun --watch run app.js
 fi

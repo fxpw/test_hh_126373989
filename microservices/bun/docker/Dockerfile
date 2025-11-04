@@ -1,4 +1,4 @@
-FROM node:22
+FROM oven/bun:latest
 
 WORKDIR /usr/src/app
 ENV NODE_PATH=/usr/src/app

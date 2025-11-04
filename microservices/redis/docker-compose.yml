@@ -1,0 +1,27 @@
+
+services:
+  redis_126373989:
+    image: redis:7-alpine
+    container_name: redis_126373989
+    restart: unless-stopped
+    command: ["redis-server", "--appendonly", "yes"]
+    env_file:
+      - .env
+    ports:
+      - "${REDIS_PORT}:6379"
+    volumes:
+      - redis_data_126373989:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - test_hh_net_126373989
+
+volumes:
+  redis_data_126373989:
+
+networks:
+  test_hh_net_126373989:
+    external: true

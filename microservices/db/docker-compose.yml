@@ -1,0 +1,26 @@
+
+services:
+  postgres_db_126373989:
+    image: postgres:15-alpine
+    container_name: postgres_db_126373989
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - "${DB_PORT}:5432"
+    volumes:
+      - postgres_data_126373989:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d ${DB_NAME}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - test_hh_net_126373989
+
+volumes:
+  postgres_data_126373989:
+
+networks:
+  test_hh_net_126373989:
+    external: true
