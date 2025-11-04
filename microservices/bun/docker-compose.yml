@@ -2,16 +2,13 @@
 services:
   bun_126373989:
     build:
-      context: .
-      dockerfile: docker/Dockerfile
+      context: ./docker
+      dockerfile: Dockerfile
     container_name: bun_126373989
     env_file:
       - .env
     ports:
       - "${BACKEND_PORT}:3000"
-    depends_on:
-      - postgres
-      - redis
     networks:
       - test_hh_net_126373989
     volumes:

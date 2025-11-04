@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 import { DataSource } from 'typeorm';
-import { TaskEntity } from './entities/TaskEntity.js';
+import { TaskEntity } from './entities/TaskEntity.ts';
 import dotenv from 'dotenv';
 dotenv.config();
 

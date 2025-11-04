@@ -1,0 +1,26 @@
+{
+	"compilerOptions": {
+		"module": "CommonJS",
+		"baseUrl": ".",
+		"paths": {
+			"$db": [
+				"./db"
+			],
+			"$config": [
+				"./config"
+			],
+			"$modules": [
+				"./modules"
+			]
+		}
+	},
+	"include": [
+		// "modules/**/*.js",
+		// "db/**/*.js",
+		"src/**/*.js",
+		"src/app.js", "src/infrastructure/db/entities/TaskEntity.ts", "src/infrastructure/db/data-source.ts", "src/infrastructure/db/orm/TypeORMTaskRepository.ts",
+	],
+	"exclude": [
+		"node_modules"
+	]
+}

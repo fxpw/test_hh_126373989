@@ -9,9 +9,9 @@ create_network:
 
 start_all:
 	@echo "Запуск всех микросервисов..."
-	@docker compose -f microservices/db/docker-compose.yml down
-	@docker compose -f microservices/redis/docker-compose.yml down
-	@docker compose -f microservices/bun/docker-compose.yml down
+	@docker compose -f microservices/db/docker-compose.yml up -d
+	@docker compose -f microservices/redis/docker-compose.yml up -d
+	@docker compose -f microservices/bun/docker-compose.yml up -d
 
 
 start:create_network start_all

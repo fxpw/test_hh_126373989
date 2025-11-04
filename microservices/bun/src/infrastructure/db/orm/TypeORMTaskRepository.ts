@@ -1,6 +1,6 @@
-import { AppDataSource } from '../db/data-source.js';
-import { TaskEntity } from '../db/entities/TaskEntity.js';
-import TaskRepository from '../../domain/repositories/TaskRepository.js';
+import { AppDataSource } from 'src/infrastructure/db/data-source.js';
+import { TaskEntity } from 'src/infrastructure/db/entities/TaskEntity.js';
+import TaskRepository from 'src/domain/entities/repositories/TaskRepository.js';
 
 export class TypeORMTaskRepository extends TaskRepository {
 	constructor() {

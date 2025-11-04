@@ -1,6 +1,6 @@
 import { Elysia } from 'elysia';
-import { TypeORMTaskRepository } from '../orm/TypeORMTaskRepository.js';
-import { RedisQueue } from '../redis/RedisQueue.js';
+import { TypeORMTaskRepository } from 'src/infrastructure/db/orm/TypeORMTaskRepository.js';
+import { RedisQueue } from 'src/infrastructure/db/redis/RedisQueue.js';
 import { CreateTaskUseCase } from '../../application/use_cases/CreateTaskUseCase.js';
 import { GetTasksUseCase } from '../../application/use_cases/GetTasksUseCase.js';
 import { UpdateTaskUseCase } from '../../application/use_cases/UpdateTaskUseCase.js';
