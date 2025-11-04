@@ -9,6 +9,7 @@ services:
       - .env
     ports:
       - "${BACKEND_PORT}:3000"
+      - "9229:9229"
     networks:
       - test_hh_net_126373989
     volumes:

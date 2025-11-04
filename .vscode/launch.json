@@ -1,0 +1,17 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug Bun (Elysia)",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "bun",
+      "runtimeArgs": ["--inspect", "--watch", "run", "src/app.ts"],
+      "skipFiles": ["<node_internals>/**"],
+      "cwd": "${workspaceFolder}/microservices/bun",
+      "console": "integratedTerminal",
+      "restart": true,
+      "autoAttachChildProcesses": true
+    }
+  ]
+}
