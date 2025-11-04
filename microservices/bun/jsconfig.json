@@ -18,7 +18,7 @@
 		// "modules/**/*.js",
 		// "db/**/*.js",
 		"src/**/*.js",
-		"src/app.js", "src/infrastructure/db/entities/TaskEntity.ts", "src/infrastructure/db/data-source.ts", "src/infrastructure/db/orm/TypeORMTaskRepository.ts",
+		"src/app.js", "src/infrastructure/db/entities/TaskEntity.ts", "src/infrastructure/db/data-source.ts", "src/infrastructure/db/orm/TypeORMTaskRepository.ts", "src/infrastructure/http/server.ts", "src/infrastructure/http/routes/task.route.ts", "src/infrastructure/http/controllers/TaskController.ts", "src/infrastructure/db/redis/RedisQueue.ts", "src/domain/repositories/TaskRepository.ts", "src/application/use_cases/UpdateTaskUseCase.ts", "src/application/use_cases/GetTasksUseCase.ts", "src/application/use_cases/DeleteTaskUseCase.ts", "src/application/use_cases/CreateTaskUseCase.ts", "src/domain/entities/Task.ts",
 	],
 	"exclude": [
 		"node_modules"

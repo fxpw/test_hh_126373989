@@ -4,15 +4,16 @@ import { TaskEntity } from './entities/TaskEntity.ts';
 import dotenv from 'dotenv';
 dotenv.config();
 
+
 export const AppDataSource = new DataSource({
 	type: 'postgres',
 	host: process.env.DB_HOST,
-	port: Number(process.env.DB_PORT || 5432),
-	username: process.env.DB_USERNAME,
+	port: Number(process.env.DB_PORT ?? 5432),
+	username: process.env.DB_USER,
 	password: process.env.DB_PASSWORD,
-	database: process.env.DB_DATABASE,
+	database: process.env.DB_NAME,
 	entities: [TaskEntity],
-	migrations: ['./src/infrastructure/db/migrations/*.js'],
-	synchronize: true,
+	migrations: ['./src/infrastructure/db/migrations/*.ts'],
+	synchronize: true, // off for prod
 	logging: false
 });
