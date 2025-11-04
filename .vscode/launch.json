@@ -1,17 +1,15 @@
 {
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "name": "Debug Bun (Elysia)",
-      "type": "node",
-      "request": "launch",
-      "runtimeExecutable": "bun",
-      "runtimeArgs": ["--inspect", "--watch", "run", "src/app.ts"],
-      "skipFiles": ["<node_internals>/**"],
-      "cwd": "${workspaceFolder}/microservices/bun",
-      "console": "integratedTerminal",
-      "restart": true,
-      "autoAttachChildProcesses": true
-    }
-  ]
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"address": "127.0.0.1",
+			"localRoot": "${workspaceFolder}/microservices/bun",
+			"name": "Attach to Bun (6499)",
+			"port": 6499,
+			"remoteRoot": "/usr/src/app",
+			"request": "attach",
+			"skipFiles": [],
+			"type": "node"
+		},
+	]
 }

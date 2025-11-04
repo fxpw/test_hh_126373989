@@ -9,7 +9,7 @@ fi
 echo "Starting Bun service on port ${BACKEND_PORT:-3000}"
 
 if [ "$NODE_ENV" = "production" ]; then
-  exec bun run src/app.ts
+  exec bun run app.ts
 else
-  exec bun --inspect --watch run src/app.ts
+  exec bun --inspect --watch run app.ts
 fi
