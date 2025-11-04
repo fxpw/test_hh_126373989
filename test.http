@@ -10,6 +10,9 @@ Content-Type: application/json
 }
 
 
+### ПОЛУЧИТЬ ЗАДАЧУ ПО ID
+GET http://localhost:3000/tasks/1
+
 ### ПОЛУЧИТЬ ВСЕ ЗАДАЧИ
 GET http://localhost:3000/tasks
 
