@@ -1,6 +1,7 @@
 import { Elysia } from 'elysia';
 import { TypeORMTaskRepository } from '@/infrastructure/db/orm/TypeORMTaskRepository.ts';
 import { RedisQueue } from '@/infrastructure/db/redis/RedisQueue.ts';
+import { RedisSubscriber } from '@/infrastructure/db/redis/RedisSubscriber.ts';
 import { CreateTaskUseCase } from '@/application/use_cases/CreateTaskUseCase.ts';
 import { GetTasksUseCase } from '@/application/use_cases/GetTasksUseCase.ts';
 import { UpdateTaskUseCase } from '@/application/use_cases/UpdateTaskUseCase.ts';
@@ -12,7 +13,7 @@ const app = new Elysia();
 
 const repo = new TypeORMTaskRepository();
 const queue = new RedisQueue(process.env.REDIS_HOST, process.env.REDIS_PORT);
-
+const subscriber = new RedisSubscriber(process.env.REDIS_HOST, process.env.REDIS_PORT);
 const controller = new TaskController({
 	create: new CreateTaskUseCase(repo, queue),
 	getAll: new GetTasksUseCase(repo),
@@ -21,6 +22,6 @@ const controller = new TaskController({
 });
 
 taskRoutes(app, controller);
-
+subscriber.listen('task_due_soon');
 const port = Number(process.env.BACKEND_PORT ?? 3000);
-app.listen(port, () => console.log(`🚀 Elysia running on port ${port}`));
+app.listen(port, () => console.log(`Elysia running on port ${port}`));

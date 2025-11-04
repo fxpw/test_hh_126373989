@@ -6,7 +6,7 @@ if [ ! -d "node_modules" ]; then
   bun install
 fi
 
-echo "🚀 Starting Bun service on port ${BACKEND_PORT:-3000}"
+echo "Starting Bun service on port ${BACKEND_PORT:-3000}"
 
 if [ "$NODE_ENV" = "production" ]; then
   exec bun run src/app.ts

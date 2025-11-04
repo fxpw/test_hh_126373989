@@ -1,0 +1,43 @@
+### СОЗДАТЬ ЗАДАЧУ
+POST http://localhost:3000/tasks
+Content-Type: application/json
+
+{
+  "title": "Написать тестовый запрос",
+  "description": "Проверка Elysia + TypeORM + Redis",
+  "dueDate": "2025-11-05T12:00:00Z",
+  "status": "pending"
+}
+
+
+### ПОЛУЧИТЬ ВСЕ ЗАДАЧИ
+GET http://localhost:3000/tasks
+
+
+### ПОЛУЧИТЬ ТОЛЬКО PENDING
+GET http://localhost:3000/tasks?status=pending
+
+
+### ОБНОВИТЬ ЗАДАЧУ (изменить статус)
+PUT http://localhost:3000/tasks/1
+Content-Type: application/json
+
+{
+  "status": "completed"
+}
+
+
+### УДАЛИТЬ ЗАДАЧУ
+DELETE http://localhost:3000/tasks/1
+
+
+### ПРОВЕРКА REDIS ОЧЕРЕДИ
+POST http://localhost:3000/tasks
+Content-Type: application/json
+
+{
+  "title": "Redis тест — срок через 1 час",
+  "description": "Проверка Redis publish/subscribe",
+  "dueDate": "2025-11-04T13:30:00Z",
+  "status": "pending"
+}

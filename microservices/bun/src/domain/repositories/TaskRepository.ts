@@ -1,4 +1,4 @@
-import { Task, TaskProps } from '../entities/Task.ts';
+import { Task, TaskProps } from '@/domain/entities/Task.ts';
 
 export abstract class TaskRepository {
 	abstract create(task: Task): Promise<Task>;

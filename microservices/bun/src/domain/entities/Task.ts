@@ -19,7 +19,13 @@ export class Task {
 		this.id = id;
 		this.title = title;
 		this.description = description ?? '';
-		this.dueDate = dueDate ? new Date(dueDate) : null;
+		if (dueDate instanceof Date) {
+			this.dueDate = dueDate;
+		} else if (typeof dueDate === 'string' && !isNaN(Date.parse(dueDate))) {
+			this.dueDate = new Date(dueDate);
+		} else {
+			this.dueDate = null;
+		}
 		this.status = status ?? 'pending';
 	}
 

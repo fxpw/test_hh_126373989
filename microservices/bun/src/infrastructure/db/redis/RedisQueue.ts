@@ -11,7 +11,7 @@ export class RedisQueue {
 	}
 
 	async publish(channel: string, message: string): Promise<void> {
-		console.log(`📨 Redis event [${channel}] → ${message}`);
+		console.log(`Redis event [${channel}] → ${message}`);
 		await this.client.publish(channel, message);
 	}
 }
