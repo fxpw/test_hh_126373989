@@ -1,4 +1,6 @@
 import { Elysia } from 'elysia';
+import { swagger } from '@elysiajs/swagger';
+
 import { TypeORMTaskRepository } from '@/infrastructure/db/orm/TypeORMTaskRepository.ts';
 import { RedisQueue } from '@/infrastructure/db/redis/RedisQueue.ts';
 import { RedisSubscriber } from '@/infrastructure/db/redis/RedisSubscriber.ts';
@@ -10,7 +12,24 @@ import { DeleteTaskUseCase } from '@/application/use_cases/DeleteTaskUseCase.ts'
 import { TaskController } from './controllers/TaskController.ts';
 import taskRoutes from './routes/task.route.ts';
 
-const app = new Elysia();
+const app = new Elysia().use(
+	swagger({
+		documentation: {
+			info: {
+				title: 'Tasks API',
+				description: 'API сервиса задач (Bun + Elysia + TypeORM + Redis)',
+				version: '1.0.1',
+			},
+			servers: [
+				{
+					url: 'http://localhost:3000',
+					description: 'Local server',
+				},
+			],
+		},
+		path: '/docs',
+	})
+);
 
 const repo = new TypeORMTaskRepository();
 const queue = new RedisQueue(process.env.REDIS_HOST, process.env.REDIS_PORT);
@@ -26,7 +45,7 @@ const controller = new TaskController({
 taskRoutes(app, controller);
 
 app.onError(({ code, error }) => {
-	console.error('❌ Ошибка:', error.message);
+	console.error('Ошибка:', error.message);
 	return {
 		success: false,
 		error: error.message,
